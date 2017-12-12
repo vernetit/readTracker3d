@@ -33,11 +33,14 @@
             display: block;
         }
     */
+    a {
+      color: inherit;
+    }
     </style>
   </head>
   <script type="text/javascript">bMostrar=0;</script>
   <body>
-      <div style="color:green"  class="dropdown"><a href="#" onclick="bMostrar=!bMostrar; if(bMostrar){ $('#controlsDiv').show(); }else{ $('#controlsDiv').hide(); } "> Config</a>
+      <div style="color:green; "  class="dropdown"><a href="#" onclick="bMostrar=!bMostrar; if(bMostrar){ $('#controlsDiv').show(); }else{ $('#controlsDiv').hide(); } "> Config</a>
       <div class="dropdown-content" style="width: 800px !important; display:none;" id="controlsDiv">
       <div style="color: green" id="screen"></div>
       
@@ -72,8 +75,8 @@
         <option value="15">15</option>
       </select>
     </span>
-    v min <input type="text" value="8" id="vMin" style="width:35px;">
-    v max <input type="text" value="10" id="vMax" style="width:35px;">
+    v min <input type="text" value="0.3" id="vMin" style="width:35px;">
+    v max <input type="text" value="0.4" id="vMax" style="width:35px;">
     <input type="button" value="+" onclick="aumenta();">
     <input type="button" value="-" onclick="disminuye();">
 
@@ -95,7 +98,7 @@
   </div>
   </div>
     
-      <a-scene id="myScene">
+      <a-scene id="myScene" onclick="goNextPhrase()">
         <!-- Cube -->
         <a-entity position="0 0 -12" rotation="45 30 0"
                   geometry="primitive: box; height: 4; width: 4; depth: 8;"
