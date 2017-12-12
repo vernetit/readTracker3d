@@ -84,10 +84,10 @@ No fue muy efusivo. Rara vez lo era; pero creo que se alegró de verme. Casi sin
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
-      <option value="4" selected>4</option>
+      <option value="4">4</option>
       <option value="5">5</option>
       <option value="6">6</option>
-      <option value="7">7</option>
+      <option value="7"  selected>7</option>
       <option value="8">8</option>
       <option value="9">9</option>
       <option value="10">10</option>
@@ -458,9 +458,10 @@ function loadText(){
   for(i=0;i<tamano;i++){
    // circles[i]={};
 
-    circles[i].x=100;
-    circles[i].y=100;
-    circles[i].r=18;
+    circles[i].x=4;
+    circles[i].y=4;
+    circles[i].z=-8;
+    circles[i].r=1;
     circles[i].vx=8;
     circles[i].vy=10;
 
@@ -479,6 +480,13 @@ function loadText(){
     }
 
     circles[i].number=arrPalabra[myIndex];
+
+    $("#txt-"+i).remove();
+
+    $("#myScene").append(`
+      <a-text value="Now Interactable" position="${circles[i].x+" "+circles[i].y+" "+circles[i].z}" wrap-pixels="275" material="color: rgba(0,0,0,0); transparent: true; opacity: 0.0;" geometry="primitive:plane" color="${circles[i].color}" id="txt-${i}"></a-text>
+
+    `);
     
 
     // if(y==0){ x=cantidadNumerosTotal/*-(masXY<0?0:1)*/; y=cantidadNumerosTotal+1+masXY/*-(masXY<0?0:1)*/; } 
@@ -492,6 +500,7 @@ function loadText(){
   t_ini = Date.now();
   pasadas++;
 
+ // return; 
   start();
 
 
@@ -825,9 +834,11 @@ function start(){
 
       circles[i].vx=generateRandomNumber(vMin,vMax); 
       circles[i].vy=generateRandomNumber(vMin,vMax); 
+      circles[i].vz=generateRandomNumber(vMin,vMax); 
 
       circles[i].vxBase=circles[i].vx; 
       circles[i].vyBase=circles[i].vy; 
+      circles[i].vzBase=circles[i].vz; 
 
 
 
@@ -871,10 +882,18 @@ function start(){
       bBreak=0;
 
       if(noMover==0){
-        circles[i].x=_.random(50,650);
-        circles[i].y=_.random(50,350);
+        circles[i].x=_.random(-5,4.5);
+        circles[i].y=_.random(0,5);
+        circles[i].z=_.random(-4,-10);
+
+        console.log(circles[i].x + " " + circles[i].y + " " + circles[i].z)
+
+        //$( "#txt-"+i ).prop( "position", circles[i].x + " " + circles[i].y + " " + circles[i].z );
+        document.getElementById("txt-"+i).setAttribute("position", circles[i].x + " " + circles[i].y + " " + circles[i].z);
 
       }
+
+      break;
       
 
       if(i==0) break;
@@ -888,7 +907,7 @@ function start(){
         // console.log(i);
 
         // console.log( Math.sqrt( Math.pow( circles[i].x - circles[j].x, 2) + Math.pow( circles[i].y - circles[j].y, 2) ) );
-
+        break; //see it
 
         if( ( Math.sqrt( Math.pow( circles[i].x - circles[j].x, 2) + Math.pow( circles[i].y - circles[j].y, 2) ) >=40 ) || noMover==1 ){
           bBreak=1;
@@ -919,7 +938,8 @@ function start(){
     }
 
 
-  }
+    
+  }//for i
   kill=setTimeout(function(){
     for(i=0;i<cantidadNumerosTotal;i++){/* circles[i].color="orange"; */}
 
@@ -953,11 +973,11 @@ function start(){
 
 function animate() {
 
-  return;
+  
   //draw the container
-  c.fillStyle = relleno;
+  //c.fillStyle = relleno;
   // c.fillStyle = "#000000";
-  c.fillRect(container.x, container.y, container.width, container.height);
+  //c.fillRect(container.x, container.y, container.width, container.height);
 
   //loop throughj the circles array
   for (var i = 0; i < cantidadNumerosTotal; i++) {
@@ -974,11 +994,13 @@ function animate() {
     if(tamano>=15 && tamano<20 ) font_size=14;
     if(tamano>=20) font_size=12;
 
-    c.font = font_size+'pt Calibri';
-    c.fillStyle = circles[i].color;
-    circles.r=c.measureText(circles[i].number).width
-    c.textAlign="center"; 
-    c.fillText( circles[i].number, circles[i].x, circles[i].y);
+    //c.font = font_size+'pt Calibri';
+    //c.fillStyle = circles[i].color;
+    //circles.r=c.measureText(circles[i].number).width
+    //c.textAlign="center"; 
+    //c.fillText( circles[i].number, circles[i].x, circles[i].y);
+    document.getElementById("txt-"+i).setAttribute("position", circles[i].x + " " + circles[i].y + " " + circles[i].z);
+    document.getElementById("txt-"+i).setAttribute("value", circles[i].number);
 
 
     if(bPause) continue;
@@ -991,6 +1013,7 @@ function animate() {
     // if(Math.abs(circles[i].vy)<Math.abs(circles[i].vyBase)){ if(circles[i].vx>0) circles[i].vy+=0.5; else circles[i].vy-=0.5; } 
 
     //time to animate our circles ladies and gentlemen.
+    /*
     if (circles[i].x - circles[i].r + circles[i].vx < container.x || circles[i].x + circles[i].r + circles[i].vx > container.x + container.width) {
       circles[i].vx = -circles[i].vx;
       //circles[i].vx = vX;
@@ -999,8 +1022,24 @@ function animate() {
     if (circles[i].y + circles[i].r + circles[i].vy > container.y + container.height || circles[i].y - circles[i].r + circles[i].vy < container.y) {
       circles[i].vy = -circles[i].vy;
       // circles[i].vy = vY;
-    }
+    }*/
 
+    if (circles[i].x + circles[i].vx < -5 || circles[i].x + circles[i].vx > 4.5) {
+               circles[i].vx = -circles[i].vx;
+               //circles[i].vx = vX;
+     }
+
+     if (circles[i].y + circles[i].vy < -0 || circles[i].y + circles[i].vy > 5) {
+       circles[i].vy = -circles[i].vy;
+       //circles[i].vx = vX;
+     }
+
+     if (circles[i].z + circles[i].vz < -10 || circles[i].z + circles[i].vz > -4) {
+       circles[i].vz = -circles[i].vz;
+       //circles[i].vx = vX;
+     }
+
+     /*
     for(j=0;j<+masXY;j++){
       if(circles[j].canCollision==1) continue;
 
@@ -1039,7 +1078,8 @@ function animate() {
 
       }
     }
-
+    */
+    /*
     if(collision){
        for(j=0;j<cantidadNumerosTotal;j++){
         // if(i==0){
@@ -1110,12 +1150,13 @@ function animate() {
        }//for collision
 
 
-    }
+    }*/
 
    
 
     circles[i].x += circles[i].vx;
     circles[i].y += circles[i].vy;
+    circles[i].z += circles[i].vz;
 
     //controversial
 
@@ -1136,7 +1177,7 @@ function animate() {
 
   requestAnimationFrame(animate);
 }
-requestAnimationFrame(animate);
+
 
 document.body.onkeyup = function(e){
   /*
@@ -1184,8 +1225,8 @@ function aumenta(){
   vMin=parseFloat($("#vMin").val());
   vMax=parseFloat($("#vMax").val());
 
-  vMin+=0.25;
-  vMax+=0.25;
+  vMin+=0.1;
+  vMax+=0.1;
 
   $("#vMin").val(vMin);
   $("#vMax").val(vMax);
@@ -1199,8 +1240,8 @@ function disminuye(){
   vMin=parseFloat($("#vMin").val());
   vMax=parseFloat($("#vMax").val());
 
-  vMin-=0.25;
-  vMax-=0.25;
+  vMin-=0.1;
+  vMax-=0.1;
 
   $("#vMin").val(vMin);
   $("#vMax").val(vMax);
@@ -1263,17 +1304,42 @@ if(_ww<=1000){
 }
 
 
-loadText();
+
 
 
 $("#myScene").append(`
-  <a-entity position="-5 0 -12" rotation="0 0 0"
-      geometry="primitive: box; height: 2; width: 2; depth: 2;"
+  <a-entity position="-5 0 -10" rotation="0 0 0"
+      geometry="primitive: box; height: 1; width: 1; depth: 1;"
       material="color: #147341; roughness: 1.0; metalness: 0.2;"></a-entity>
 
 `);
+$("#myScene").append(`
+  <a-entity position="-5 0 -4" rotation="0 0 0"
+      geometry="primitive: box; height: 1; width: 1; depth: 1;"
+      material="color: #147341; roughness: 1.0; metalness: 0.2;"></a-entity>
 
+`);
+$("#myScene").append(`
+  <a-entity position="4.5 0 -4" rotation="0 0 0"
+      geometry="primitive: box; height: 1; width: 1; depth: 1;"
+      material="color: #147341; roughness: 1.0; metalness: 0.2;"></a-entity>
+
+`);
+$("#myScene").append(`
+  <a-entity position="4.5 0 -10" rotation="0 0 0"
+      geometry="primitive: box; height: 1; width: 1; depth: 1;"
+      material="color: #147341; roughness: 1.0; metalness: 0.2;"></a-entity>
+
+`);
+/*
+$("#myScene").append(`
+<a-text value="Now Interactable" position="4 4 -8" geometry="primitive:plane" color="rgb(0,0,180)" id="txt-0" rotation="" scale="" visible="" text=""></a-text>
+`);
+*/
 $("#cube1").remove();
 
 //$("#screen").hide();
 $(".a-enter-vr").css("top","0")
+
+loadText();
+requestAnimationFrame(animate);
