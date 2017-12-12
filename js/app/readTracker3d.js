@@ -84,10 +84,10 @@ No fue muy efusivo. Rara vez lo era; pero creo que se alegró de verme. Casi sin
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
-      <option value="4">4</option>
+      <option value="4"  selected>4</option>
       <option value="5">5</option>
       <option value="6">6</option>
-      <option value="7"  selected>7</option>
+      <option value="7">7</option>
       <option value="8">8</option>
       <option value="9">9</option>
       <option value="10">10</option>
@@ -417,7 +417,7 @@ function loadText(){
   
   noMover=0;
   myIndex=0; 
-  txt = $("#input1").val()+" ";
+  txt = getCleanedString($("#input1").val()+" ");
   str = txt;
 
   limpia = str.split("\n").join(" ");
@@ -454,6 +454,11 @@ function loadText(){
   cantidadNumerosTotal=tamano;
 
   myIndex2=0;
+
+  for(i=0;i<26;i++){
+    $("#txt-"+i).remove();
+
+  }
 
   for(i=0;i<tamano;i++){
    // circles[i]={};
@@ -1225,8 +1230,8 @@ function aumenta(){
   vMin=parseFloat($("#vMin").val());
   vMax=parseFloat($("#vMax").val());
 
-  vMin+=0.1;
-  vMax+=0.1;
+  vMin+=0.05;
+  vMax+=0.05;
 
   $("#vMin").val(vMin);
   $("#vMax").val(vMax);
@@ -1240,8 +1245,8 @@ function disminuye(){
   vMin=parseFloat($("#vMin").val());
   vMax=parseFloat($("#vMax").val());
 
-  vMin-=0.1;
-  vMax-=0.1;
+  vMin-=0.05;
+  vMax-=0.05;
 
   $("#vMin").val(vMin);
   $("#vMax").val(vMax);
@@ -1289,19 +1294,6 @@ function generateRandomNumber(min,max) {
 _ww=$(window).width();
 
 
-if(_ww<=1000){
-
-  $("#container").css("zoom","1.35");
-  $("#controles").css("zoom","3.5");
-  $("#controls-1").css("zoom","3.5");
-  $(".hide-mobile").hide();
-  $("#controles").prepend("<br><br><br>");
-  // alert();
-}else{
-  $("#container").css("zoom","1.5");
-
-
-}
 
 
 
@@ -1341,5 +1333,48 @@ $("#cube1").remove();
 //$("#screen").hide();
 $(".a-enter-vr").css("top","0")
 
+if(_ww<=1000){
+   $("#controlsDiv").css("zoom","0.3");
+  /*
+ 
+  $("#controles").css("zoom","3.5");
+  $("#controls-1").css("zoom","3.5");
+  $(".hide-mobile").hide();
+  $("#controles").prepend("<br><br><br>");*/
+  // alert();
+}else{
+  $("#container").css("zoom","1.5");
+
+
+}
+
+function getCleanedString(cadena){
+   // Definimos los caracteres que queremos eliminar
+   /*var specialChars = "!@#$^&%*()+=-[]\/{}|:<>?,.";
+
+   // Los eliminamos todos
+   for (var i = 0; i < specialChars.length; i++) {
+       cadena= cadena.replace(new RegExp("\\" + specialChars[i], 'gi'), '');
+   }   */
+
+   // Lo queremos devolver limpio en minusculas
+   cadena = cadena.toLowerCase();
+
+   // Quitamos espacios y los sustituimos por _ porque nos gusta mas asi
+  // cadena = cadena.replace(/ /g,"_");
+
+   // Quitamos acentos y "ñ". Fijate en que va sin comillas el primer parametro
+   cadena = cadena.replace(/á/gi,"a");
+   cadena = cadena.replace(/é/gi,"e");
+   cadena = cadena.replace(/í/gi,"i");
+   cadena = cadena.replace(/ó/gi,"o");
+   cadena = cadena.replace(/ú/gi,"u");
+   cadena = cadena.replace(/ñ/gi,"n");
+   return cadena;
+}
+
+
 loadText();
 requestAnimationFrame(animate);
+
+
