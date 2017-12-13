@@ -48,12 +48,7 @@ result=numA*numB;
 _p+=`
 
   </tr></table> -->
-  <div id="helpDiv" style="width: 50%;">
-  
-  <div id="output1" style="/*background-color:rgb(174,183,175)*/ "><span style=" font-size: 30px;  color: transparent"><b> </b></span><span style=" font-size: 30px;  color: transparent"><b>&nbsp;</b></span><span style=" font-size: 30px;  color: transparent"><b>&nbsp;</b></span><span style=" font-size: 30px;  color: transparent"><b>&nbsp;</b></span><span style=" font-size: 30px;  color: rgb(0,0,180)"><b>A</b></span><span style=" font-size: 30px;  color: rgb(0,0,180)"><b>á</b></span><span style=" font-size: 30px;  color: rgb(175,13,102)"><b>B</b></span><span style=" font-size: 30px;  color: rgb(146,248,70)"><b>C</b></span><span style=" font-size: 30px;  color: rgb(255,200,47)"><b>D</b></span><span style=" font-size: 30px;  color: rgb(255,118,0)"><b>E</b></span><span style=" font-size: 30px;  color: rgb(255,118,0)"><b>é</b></span><span style=" font-size: 30px;  color: rgb(255,152,213)"><b>F</b></span><span style=" font-size: 30px;  color: rgb(235,235,222)"><b>G</b></span><span style=" font-size: 30px;  color: rgb(100,100,100)"><b>H</b></span><span style=" font-size: 30px;  color: rgb(255,255,0)"><b>I</b></span><span style=" font-size: 30px;  color: rgb(255,255,0)"><b>í</b></span><span style=" font-size: 30px;  color: rgb(255,255,150)"><b>J</b></span><span style=" font-size: 30px;  color: rgb(55,19,112) "><b>K</b></span><span style=" font-size: 30px;  color: rgb(202,62,94)"><b>L</b></span><span style=" font-size: 30px;  color: rgb(205,145,63)"><b>M</b></span><span style=" font-size: 30px;  color: rgb(12,75,100)"><b>N</b></span><span style=" font-size: 30px;  color: rgb(12,75,100)"><b>ñ</b></span><span style=" font-size: 30px;  color: rgb(255,0,0)"><b>O</b></span><span style=" font-size: 30px;  color: rgb(255,0,0)"><b>ó</b></span><span style=" font-size: 30px;  color: rgb(175,155,50)"><b>P</b></span><span style=" font-size: 30px;  color: rgb(185,185,185)"><b>Q</b></span><span style=" font-size: 30px;  color: rgb(37,70,25)"><b>R</b></span><span style=" font-size: 30px;  color: rgb(121,33,135)"><b>S</b></span><span style=" font-size: 30px;  color: rgb(83,140,208)"><b>T</b></span><span style=" font-size: 30px;  color: rgb(0,154,37)"><b>U</b></span><span style=" font-size: 30px;  color: rgb(0,154,37)"><b>ú</b></span><span style=" font-size: 30px;  color: rgb(178,220,205)"><b>V</b></span><span style=" font-size: 30px;  color: rgb(169,34,0)"><b>W</b></span><span style=" font-size: 30px;  color: rgb(0,0,74)"><b>X</b></span><span style=" font-size: 30px;  color: rgb(175,200,74)"><b>Y</b></span><span style=" font-size: 30px;  color: rgb(63,25,12)"><b>Z</b></span><!--<span style=" font-size: 30px;  color: rgb(0,0,180)"><b>0</b></span><span style=" font-size: 30px;  color: rgb(175,13,102)"><b>1</b></span><span style=" font-size: 30px;  color: rgb(146,248,70)"><b>2</b></span><span style=" font-size: 30px;  color: rgb(255,200,47)"><b>3</b></span><span style=" font-size: 30px;  color: rgb(255,118,0)"><b>4</b></span><span style=" font-size: 30px;  color: rgb(255,152,213)"><b>5</b></span><span style=" font-size: 30px;  color: rgb(235,235,222)"><b>6</b></span><span style=" font-size: 30px;  color: rgb(100,100,100)"><b>7</b></span><span style=" font-size: 30px;  color: rgb(255,255,0)"><b>8</b></span><span style=" font-size: 30px;  color: rgb(255,255,150)"><b>9</b></span><span style=" font-size: 30px;  color: transparent"><b>
-    </b></span><span style=" font-size: 30px;  color: transparent"><b>  </b></span>--></div>
-  </div>
-
+  <!-- <div id="helpDiv" style="width: 50%;"> -->
   <!--
   <br> <input type="text" value="" id="myInput" style="width:200px; text-align:right;unicode-bidi:bidi-override; direction:rtl;"> 
   <input type="button" value="show table nums" onclick="$('.myTd').css('color','black');">
@@ -107,10 +102,13 @@ No fue muy efusivo. Rara vez lo era; pero creo que se alegró de verme. Casi sin
       <option value="24">24</option>
       <option value="25">25</option>
       <option value="26">26</option>
-    </select>&nbsp; words
-    <input type="button" value="autoplay" onclick="_autoplay();" id="autoplay-btn">
+    </select>&nbsp; w
+    <input type="button" value="autoplay by phrase" onclick="_autoplay();" id="autoplay-btn">
+    <input type="button" value="autoplay by word" onclick="_autoplay2();" id="autoplay-btn2">
     <input type="number" value="0" id="autoplay-value" style="width: 50px;">
-    <span style="font-size:15px;" class="hide-mobile"> | Key: X: next words Z: previous words | robertchalean@gmail.com </span>
+    <a href="#" onclick="$('body').css('background-color','black')">bg1</a>
+    <a href="#" onclick="$('body').css('background-color','rgb(174,183,175)')">bg2</a>
+    <span style="font-size:15px;" class="hide-mobile"> | Key: X: next words Z: prev words | robertchalean@gmail.com </span>
   </div>
   </center>
 `;
@@ -166,7 +164,7 @@ function _autoplay(){
 
   if(bAutoplay){
     
-    $("#autoplay-btn").val("stop autoplay");
+    $("#autoplay-btn").val("stop autoplay by phrase");
 
     if(parseInt($("#autoplay-value").val() ) == 0 ){
 
@@ -183,7 +181,53 @@ function _autoplay(){
   }else{
 
     clearInterval(killAutoplay);
-    $("#autoplay-btn").val("autoplay");
+    $("#autoplay-btn").val("autoplay by phrase");
+
+  }
+
+}
+
+var killAutoplay2=0;
+var bAutoplay2=0;
+var autoplayDelayByWord=0;
+var autoplayIndex=0;
+
+
+function _autoplay2(){
+  //console.log("autoplay")
+  
+  bAutoplay=!bAutoplay;
+
+  if(bAutoplay){
+
+    autoplayDelayByWord=parseInt($("#autoplay-value").val() )/ tamano;
+    autoplayIndex=0;
+    
+    $("#autoplay-btn2").val("stop autoplay by word");
+
+    if(parseInt($("#autoplay-value").val() ) == 0 ){
+
+      alert("you most configure autoplay velocity setting your velocity of lecture passing some phrases with key X. Or inserting your own value.");
+      _autoplay2();
+      return;
+    }
+
+    killAutoplay2=setInterval(function(){
+      
+      myIndex++;
+      circles[autoplayIndex].number=arrPalabra[myIndex];
+      autoplayIndex++;
+
+      if(autoplayIndex==tamano) autoplayIndex=0;
+
+     // goNextPhrase();
+
+    },  autoplayDelayByWord);
+
+  }else{
+
+    clearInterval(killAutoplay2);
+    $("#autoplay-btn2").val("autoplay by word");
 
   }
 
@@ -471,6 +515,10 @@ function loadText(){
     circles[i].vy=10;
 
 
+    circles[i].canCollision=1;
+    circles[i].collisionWith=1;
+
+
     if(bChColor){
 
       circles[i].color=abc1[myAbcArray[myIndex2]];
@@ -486,10 +534,17 @@ function loadText(){
 
     circles[i].number=arrPalabra[myIndex];
 
+    wrapPixels=275;
+
+    if(tamano>=5) wrapPixels=350;
+    if(tamano>=10) wrapPixels=400;
+    if(tamano>=15) wrapPixels=500;
+    if(tamano>=20) wrapPixels=600;
+
     $("#txt-"+i).remove();
 
     $("#myScene").append(`
-      <a-text value="Now Interactable" position="${circles[i].x+" "+circles[i].y+" "+circles[i].z}" wrap-pixels="275" material="color: rgba(0,0,0,0); transparent: true; opacity: 0.0;" geometry="primitive:plane" color="${circles[i].color}" id="txt-${i}"></a-text>
+      <a-text value="Now Interactable" position="${circles[i].x+" "+circles[i].y+" "+circles[i].z}" wrap-pixels="${wrapPixels}" wrpa-count="20" material="color: rgb(0,0,0); transparent: true; opacity: 0.0;" geometry="primitive:sphere" color="${circles[i].color}" id="txt-${i}"></a-text>
 
     `);
     
@@ -845,6 +900,8 @@ function start(){
       circles[i].vyBase=circles[i].vy; 
       circles[i].vzBase=circles[i].vz; 
 
+      
+
 
 
        if(_.random(0,1)){
@@ -1044,119 +1101,128 @@ function animate() {
        //circles[i].vx = vX;
      }
 
-     /*
-    for(j=0;j<+masXY;j++){
-      if(circles[j].canCollision==1) continue;
+     for(j=0;j<cantidadNumerosTotal;j++){
+        if(circles[j].canCollision==1) continue;
 
-      if( Math.sqrt( Math.pow( circles[j].x - circles[circles[j].collisionWith].x, 2) + Math.pow( circles[j].y - circles[circles[j].collisionWith].y, 2) ) >= 150 ){
-        // console.log("hola")
+        if( Math.sqrt( Math.pow( circles[j].x - circles[circles[j].collisionWith].x, 2) + Math.pow( circles[j].y - circles[circles[j].collisionWith].y, 2) + Math.pow( circles[i].z - circles[j].z, 2) ) >= 2.5 ){
+          // console.log("hola")
 
-        circles[j].canCollision=1;
-        circles[circles[j].collisionWith].canCollision=1;
+          circles[j].canCollision=1;
+          circles[circles[j].collisionWith].canCollision=1;
 
-        // circles[circles[i].collisionWith].vy+=0.5;
-        // circles[circles[i].collisionWith].vy+=0.5;
+          // circles[circles[i].collisionWith].vy+=0.5;
+          // circles[circles[i].collisionWith].vy+=0.5;
 
-       // circles[circles[i].collisionWith].vy+=0.5;
-       // circles[circles[i].collisionWith].vy+=0.5;
+         // circles[circles[i].collisionWith].vy+=0.5;
+         // circles[circles[i].collisionWith].vy+=0.5;
 
-        // circles[i].vx=circles[i].vxBase * circles[i].vx>0?1:-1 ;
-        // circles[i].vy=circles[i].vyBase *  circles[i].vy>0?1:1 ;
+          // circles[i].vx=circles[i].vxBase * circles[i].vx>0?1:-1 ;
+          // circles[i].vy=circles[i].vyBase *  circles[i].vy>0?1:1 ;
 
-        // circles[i].vx=circles[i].vxBase * circles[i].vx>0?1:-1 ;
-        // circles[i].vy=circles[i].vyBase *  circles[i].vy>0?1:1 ;
+          // circles[i].vx=circles[i].vxBase * circles[i].vx>0?1:-1 ;
+          // circles[i].vy=circles[i].vyBase *  circles[i].vy>0?1:1 ;
 
 
-       // console.log(circles[i].vxBase)
-
+          //console.log(circles[i].vxBase)
 
 
 
-      }else{
-        //recupero velocidad
 
-        // if(circles[circles[i].collisionWith].vy<circles[circles[i].collisionWith].vyBase) circles[circles[i].collisionWith].vy+=0.5;
-        // if(circles[circles[i].collisionWith].vy<circles[circles[i].collisionWith].vyBase) circles[circles[i].collisionWith].vy+=0.5;
+        }else{
+          //recupero velocidad
 
-        // if(circles[i].xy<circles[i].vxBase) circles[i].vx+=0.5;
-        // if(circles[i].vy<circles[i].vyBase) circles[i].vy+=0.5;
+          // if(circles[circles[i].collisionWith].vy<circles[circles[i].collisionWith].vyBase) circles[circles[i].collisionWith].vy+=0.5;
+          // if(circles[circles[i].collisionWith].vy<circles[circles[i].collisionWith].vyBase) circles[circles[i].collisionWith].vy+=0.5;
 
-      }
-    }
-    */
-    /*
-    if(collision){
-       for(j=0;j<cantidadNumerosTotal;j++){
-        // if(i==0){
-        //   bBreak=1;
-        //   break;
-        // }
-
-        // console.log(i);
-
-        // console.log( Math.sqrt( Math.pow( circles[i].x - circles[j].x, 2) + Math.pow( circles[i].y - circles[j].y, 2) ) );
-
-        if(j!=i){
-          if( Math.sqrt( Math.pow( circles[i].x - circles[j].x, 2) + Math.pow( circles[i].y - circles[j].y, 2) ) <= 20 ){
-
-            if(circles[i].canCollision==0 || circles[j].canCollision==0) continue;
-
-            circles[i].canCollision=0;
-            circles[j].canCollision=0;
-            
-            circles[i].collisionWith=j;
-            circles[j].canCollision=i;
-
-            //if(_.random(0,13)<13) continue;
-            // if(_.random(0,5)<4) continue;
-            if(_.random(0,15)<7) continue;
-
-            // if(circles[i].vx>0) circles[i].vx = circles[i].vxBase * 0.75; else circles[i].vx = circles[i].vxBase *  -0.75;
-            // if(circles[j].vx>0) circles[j].vx = circles[j].vxBase * 0.75; else circles[j].vx = circles[j].vxBase *  -0.75;
-
-            // if(circles[i].vy>0) circles[i].vy = circles[i].vyBase * 0.75; else circles[i].vy = circles[i].vyBase *  -0.75;
-            // if(circles[j].vy>0) circles[j].vy = circles[j].vyBase * 0.75; else circles[j].vy = circles[j].vyBase *  -0.75;
-
-            // circles[i].vy *= 0.9;
-            // circles[j].vx *= 0.9;
-
-
-
-            // if( Math.pow( circles[i].x - circles[j].x, 2) > Math.pow( circles[i].y - circles[j].y, 2) ){
-            //   circles[i].vx = -circles[i].vx;
-            //   circles[j].vx = -circles[i].vx;
-
-            // }else{
-
-            //   circles[i].vy = -circles[i].vy;
-            //   circles[j].vy = -circles[i].vy;
-
-
-            // }
-
-             circles[i].vx = -circles[i].vx;
-            circles[j].vx = -circles[i].vx;
-
-            circles[i].vy = -circles[i].vy;
-            circles[j].vy = -circles[i].vy;
-            
-            // circles[i].vx = -circles[i].vx;
-            // circles[j].vx = -circles[i].vx;
-
-            // circles[i].canCollision=0;
-            // circles[j].canCollision=0;
-            
-            // circles[i].collisionWith=j;
-            // circles[j].canCollision=i;     
-
-          }
+          // if(circles[i].xy<circles[i].vxBase) circles[i].vx+=0.5;
+          // if(circles[i].vy<circles[i].vyBase) circles[i].vy+=0.5;
 
         }
-       }//for collision
+      }
 
 
-    }*/
+      if(collision && cantidadNumerosTotal<=10){
 
+          for(j=0;j<cantidadNumerosTotal;j++){
+
+
+           // if(i==0){
+           //   bBreak=1;
+           //   break;
+           // }
+
+           // console.log(i);
+
+           // console.log( Math.sqrt( Math.pow( circles[i].x - circles[j].x, 2) + Math.pow( circles[i].y - circles[j].y, 2) ) );
+
+           // console.log( Math.sqrt( Math.pow( circles[i].x - circles[j].x, 2) + Math.pow( circles[i].y - circles[j].y, 2) + Math.pow( circles[i].z - circles[j].z, 2) ) );
+
+           if(j!=i){
+             if( Math.sqrt( Math.pow( circles[i].x - circles[j].x, 2) + Math.pow( circles[i].y - circles[j].y, 2) + Math.pow( circles[i].z - circles[j].z, 2) ) <= 1.5 ){
+
+
+               if(circles[i].canCollision==0 || circles[j].canCollision==0) continue;
+
+               circles[i].canCollision=0;
+               circles[j].canCollision=0;
+               
+               circles[i].collisionWith=j;
+               circles[j].canCollision=i;
+
+               // //if(_.random(0,13)<13) continue;
+               // // if(_.random(0,5)<4) continue;
+               // if(_.random(0,15)<10) continue;
+
+               // if(circles[i].vx>0) circles[i].vx = circles[i].vxBase * 0.75; else circles[i].vx = circles[i].vxBase *  -0.75;
+               // if(circles[j].vx>0) circles[j].vx = circles[j].vxBase * 0.75; else circles[j].vx = circles[j].vxBase *  -0.75;
+
+               // if(circles[i].vy>0) circles[i].vy = circles[i].vyBase * 0.75; else circles[i].vy = circles[i].vyBase *  -0.75;
+               // if(circles[j].vy>0) circles[j].vy = circles[j].vyBase * 0.75; else circles[j].vy = circles[j].vyBase *  -0.75;
+
+               // circles[i].vy *= 0.9;
+               // circles[j].vx *= 0.9;
+
+               myRnd=_.random(0,2);
+
+               // circles[i].vx *= 0.9; circles[j].vx *= 0.9;
+               // circles[i].vy *= 0.9; circles[j].vy *= 0.9;
+               // circles[i].vz *= 0.9; circles[j].vz *= 0.9;
+
+               if(myRnd==0){ circles[i].vx = -circles[i].vx; circles[j].vx = -circles[i].vx; }
+               if(myRnd==1){ circles[i].vy = -circles[i].vy; circles[j].vy = -circles[i].vy; }
+               if(myRnd==2){ circles[i].vz = -circles[i].vz; circles[j].vz = -circles[i].vz; }
+
+               
+
+
+
+               // if( Math.pow( circles[i].x - circles[j].x, 2) > Math.pow( circles[i].y - circles[j].y, 2) ){
+                 // circles[i].vx = -circles[i].vx; circles[j].vx = -circles[i].vx;
+
+               // }else{
+
+               //   circles[i].vy = -circles[i].vy;
+               //   circles[j].vy = -circles[i].vy;
+
+
+               // }
+               
+               // circles[i].vx = -circles[i].vx;
+               // circles[j].vx = -circles[i].vx;
+
+               // circles[i].canCollision=0;
+               // circles[j].canCollision=0;
+               
+               // circles[i].collisionWith=j;
+               // circles[j].canCollision=i;     
+
+             }
+
+           }
+          }//for collision
+
+
+       }//if collision
    
 
     circles[i].x += circles[i].vx;
@@ -1334,7 +1400,7 @@ $("#cube1").remove();
 $(".a-enter-vr").css("top","0")
 
 if(_ww<=1000){
-   $("#controlsDiv").css("zoom","0.3");
+   $("#controlsDiv").css("zoom","0.4");
   /*
  
   $("#controles").css("zoom","3.5");
@@ -1343,33 +1409,27 @@ if(_ww<=1000){
   $("#controles").prepend("<br><br><br>");*/
   // alert();
 }else{
-  $("#container").css("zoom","1.5");
+  /*$("#container").css("zoom","1.5");*/
 
 
 }
 
 function getCleanedString(cadena){
-   // Definimos los caracteres que queremos eliminar
-   /*var specialChars = "!@#$^&%*()+=-[]\/{}|:<>?,.";
 
-   // Los eliminamos todos
-   for (var i = 0; i < specialChars.length; i++) {
-       cadena= cadena.replace(new RegExp("\\" + specialChars[i], 'gi'), '');
-   }   */
-
-   // Lo queremos devolver limpio en minusculas
-   cadena = cadena.toLowerCase();
-
-   // Quitamos espacios y los sustituimos por _ porque nos gusta mas asi
-  // cadena = cadena.replace(/ /g,"_");
-
-   // Quitamos acentos y "ñ". Fijate en que va sin comillas el primer parametro
    cadena = cadena.replace(/á/gi,"a");
    cadena = cadena.replace(/é/gi,"e");
    cadena = cadena.replace(/í/gi,"i");
    cadena = cadena.replace(/ó/gi,"o");
    cadena = cadena.replace(/ú/gi,"u");
    cadena = cadena.replace(/ñ/gi,"n");
+
+   cadena = cadena.replace(/Á/gi,"A");
+   cadena = cadena.replace(/É/gi,"E");
+   cadena = cadena.replace(/Í/gi,"I");
+   cadena = cadena.replace(/Ó/gi,"O");
+   cadena = cadena.replace(/Ú/gi,"U");
+   cadena = cadena.replace(/Ñ/gi,"N");
+
    return cadena;
 }
 
