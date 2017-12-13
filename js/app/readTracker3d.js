@@ -880,7 +880,6 @@ var autoCorrect=1;
 
 function start(){
   
-
   vMin=parseFloat($("#vMin").val());
   vMax=parseFloat($("#vMax").val());
 
@@ -889,21 +888,20 @@ function start(){
 
     // circles[i].vx=_.random(vMin,vMax); 
     // circles[i].vy=_.random(vMin,vMax); 
+    
+    circles[i].vx=generateRandomNumber(vMin,vMax); 
+    circles[i].vy=generateRandomNumber(vMin,vMax); 
+    circles[i].vz=generateRandomNumber(vMin,vMax); 
 
     if(noMover==0){
 
-      circles[i].vx=generateRandomNumber(vMin,vMax); 
-      circles[i].vy=generateRandomNumber(vMin,vMax); 
-      circles[i].vz=generateRandomNumber(vMin,vMax); 
+      
 
       circles[i].vxBase=circles[i].vx; 
       circles[i].vyBase=circles[i].vy; 
       circles[i].vzBase=circles[i].vz; 
 
       
-
-
-
        if(_.random(0,1)){
           circles[i].vx*=-1; 
 
@@ -1302,9 +1300,7 @@ function aumenta(){
   $("#vMin").val(vMin);
   $("#vMax").val(vMax);
 
-
   start();
-
 }
 
 function disminuye(){
@@ -1318,9 +1314,6 @@ function disminuye(){
   $("#vMax").val(vMax);
 
   start();
-
-
-
 }
 
 function getParameter(parameterName) {
@@ -1346,7 +1339,6 @@ if(getParameter("video")!=null){
   //   $("#container").css("overflow","scroll");
 
   // },100);
-  
 }
 
 function generateRandomNumber(min,max) {
@@ -1358,11 +1350,6 @@ function generateRandomNumber(min,max) {
 }
 
 _ww=$(window).width();
-
-
-
-
-
 
 
 $("#myScene").append(`
@@ -1410,7 +1397,6 @@ if(_ww<=1000){
   // alert();
 }else{
   /*$("#container").css("zoom","1.5");*/
-
 
 }
 
